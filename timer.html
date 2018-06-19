@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Timer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<link rel="stylesheet" href="time-styles.css"/>
+</head>
+<body>
+    <div class="container">
+<main class="border">
+    <div class="wrapper top">
+    
+        
+        <div id="hourglass">
+    <svg class="righttri" height="800" width="500">
+  <polygon points="99,77 99,343 181,210" style="fill:lightslategrey;stroke:white;stroke-width:10" />
+        
+<svg class="lefttri" height="800" width="500">
+  <polygon points="289,77 289,344 203,210" style="fill:lightslategrey;stroke:white;stroke-width:10" />
+        </svg></svg>
+            <div class="sand sand-bottom">
+                <div class="innersandtop"></div>
+            </div>
+            <div class="sand sand-top">
+                <div class="innersandbottom"></div>
+            </div>
+        
+        </div>
+        
+        <div class="timedisplay">
+            <div class="time display">
+            <h2><span class="time remaining">00:00:00</span></h2>
+            <h2><span class="totalpoms">0</span></h2>
+            </div>
+            <div class="buttons">
+    <button id="start"><span><i class="fas fa-play"></i></span></button>
+    <button id="pause"><span><i class="fas fa-pause"></i></span></button>
+    <button id="clear"><span><i class="fas fa-stop"></i></span></button>
+    </div>
+        </div>
+    </div>
+    
+    <div class="options wrapper">
+        <div id="settings">
+            
+        <label class="switch">
+            <input type="checkbox" onclick="toggle()" id="toggler">
+            <span class="slider"></span>
+            </label>
+        </div>
+        <div id="settings-reg">
+        <form action="#">
+            <input type="text" class="goal reg-hours" size="2" maxlength="2" placeholder="00"  onkeypress='return event.charCode >= 48 && event.charCode <= 57'> 
+            <p class="mid">:</p>
+            <input type="text" class="goal reg-minutes" size="2" maxlength="2" placeholder="00"  onkeypress='return event.charCode >= 48 && event.charCode <= 57'>  
+            <p class="mid">:</p>
+            <input type="text" class="goal reg-seconds" size="2" maxlength="2" placeholder="00"  onkeypress='return event.charCode >= 48 && event.charCode <= 57'> 
+            </form></div>
+        <div id="pom-input">
+        <div id="pom-work">
+        <form action="#">
+            <label>work <br></label>
+            <input type="text" class="goal" size="2" maxlength="2" placeholder="00"> 
+            <p class="mid">:</p>
+            <input type="text" class="goal" size="2" maxlength="2" placeholder="00"> 
+            <p class="mid">:</p>
+            <input type="text" class="goal" size="2" maxlength="2" placeholder="00">
+            </form></div>
+         <div id="pom-break">
+        <form action="#">
+            <label>rest <br></label>
+            <input type="text" class="goal" size="2" maxlength="2" placeholder="00"> 
+            <p class="mid">:</p>
+            <input type="text" class="goal" size="2" maxlength="2" placeholder="00"> 
+            <p class="mid">:</p>
+            <input type="text" class="goal" size="2" maxlength="2" placeholder="00">
+            </form></div>
+            </div>
+        
+        <button id="submit">set</button>
+        </div>
+    
+    
+</main>
+    </div>
+    
+  
+	<script src="timer-scripts.js"></script>
+    
+</body>
+</html>

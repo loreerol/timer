@@ -1,0 +1,312 @@
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:700;}dfn{font-style:italic;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-family:monospace, serif;font-size:1em;}pre{white-space:pre-wrap;word-wrap:break-word;}q{quotes:\201C \201D \2018 \2019;}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-.5em;}sub{bottom:-.25em;}img{border:0;}svg:not(:root){overflow:hidden;}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em;}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}button,input{line-height:normal;}button,html input[type=button],/* 1 */input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}button[disabled],input[disabled]{cursor:default;}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0;}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}body,figure{margin:0;}legend,button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+.clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+outline: none;
+}
+
+body {
+	font-family: 'Roboto Mono', monospace;
+    display: flex;
+    justify-content: center
+}
+.border{
+    margin-left: auto;
+        margin-right: auto;
+}
+.container, .innersandtop, .innersandbottom{
+z-index: -2;
+  background: linear-gradient(225deg, #ffdaab, mistyrose, pink, #e1eaff, pink);
+  background-size: 300% 300%;
+  box-sizing: border-box;
+  display: table;
+  height: 100%;
+    padding: 0;
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  -webkit-animation: Rainbow 30s ease infinite;
+  -moz-animation: Rainbow 30s ease infinite;
+  animation: Rainbow 30s ease infinite;
+}
+
+@-webkit-keyframes Rainbow {
+  0% {
+    background-position: 94% 0%; }
+  50% {
+    background-position: 7% 100%; }
+  100% {
+    background-position: 94% 0%; } }
+
+main{
+    	margin: 100px;
+        width: 40em;
+        border-radius: 30px;
+        border: 20px solid white;
+    background: lightslategrey;
+    z-index: 3;
+    overflow: hidden;
+   
+        
+}
+.top{
+    display: flex;
+    justify-content:space-around;
+
+}
+.timedisplay{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    z-index: 5;
+}
+.totalpoms{
+   display:none ;
+}
+
+#hourglass{
+   width: 200px;
+    height: 300px;
+    background-color: #efefef;
+     -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    overflow: hidden;
+    
+}
+.righttri{
+    position:absolute;
+    left: -94px;
+    top:-60px
+}
+
+.sand{
+    height: 150px;
+    vertical-align: middle;
+    overflow: hidden;
+}
+.sand-bottom{
+    border-top: 20px solid white;
+
+}
+.sand-top{
+   border-bottom: 20px solid white;
+}
+
+.innersandtop{
+    height: 30%;
+    background-color: pink;
+    overflow: hidden;
+    
+}
+
+.innersandbottom{
+    height: 15%;
+    background-color: pink;
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+	padding: 35px;
+	text-align: center;
+
+}
+h2, label, input {
+	font-size: 40px;
+	font-weight: bold;
+}
+button {
+	font-size: 20px;
+    color: pink;
+	background: white;
+	padding: 20px 20px;
+	text-align: center;
+	transition: all 0.3s;
+    border: 2px solid lightslategrey;
+    border-radius: 5px;
+    
+    
+}
+
+
+button:hover {
+	background: mistyrose;
+}
+
+.options{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    
+}
+
+p{
+    font-size: 2.5em;
+    color: gray;
+    
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+    display: inline;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: pink;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+form input{
+    width: 50px;
+    margin: 0px;
+    padding: 0px;
+    border: 0;
+    color: #efefef;
+    
+
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  
+}
+.mid{
+    display: inline;
+    
+}
+.goal{
+  border-bottom: 1px solid pink;
+    text-align: right; 
+}
+
+}
+#submit{
+    float: right
+}
+label{
+    font-size: 1em;
+    color: lightgrey;
+    font-style: italic;
+}
+#pom-input{
+    display: none;
+}
+
+
+ @media only screen and (max-width : 720px) {
+     .top{
+         flex-direction: column;
+         flex-shrink: 0;
+         display: flex;
+     }
+     body{
+         overflow: scroll;
+         
+     }
+     .container{
+        
+     }
+     .border{
+         margin: 10px;
+         width:90vw ;
+         border:none;
+         border-radius: 0;
+         display: flex;
+         flex-direction: column-reverse;
+         margin-left: auto;
+        margin-right: auto;     
+     }
+     #hourglass{
+         display: block;
+        margin-left: auto;
+        margin-right: auto;
+
+     }
+     
+     button{
+         padding: 15px 17px;
+     }
+    
+     .options{
+         flex-direction: column;
+         z-index: 2;
+     }
+     
+     #settings-reg{
+         margin: 5px;
+     }
+     #pom-input{
+         margin: 10px;
+     }
+     #submit{
+         width: 50%
+     }
+     .switch{
+         display: flex;
+        
+     }
+     .timedisplay{
+         display: block;
+         margin-left: auto;
+        margin-right: auto;
+     }
+     .break{
+         display: block;
+         height: 1px;
+         width: 100%;
+     }
+     
+    }
+
+
+
