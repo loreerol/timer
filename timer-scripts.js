@@ -1,33 +1,21 @@
 /* To do:
-
 get the time entered
 when the set button is clicked, or enter is pushed
-
 take the three entries entered, convert all three to total seconds
-
 send the time to the timer clock
-
 decrement the time on the timer clock
-
 the play button should be disabled while timer is running
     on set, button style = clicked
-
 hook up pause button
     if pause button clicked, removed clicked style from play button
     add clicked style to pause button, unless the clock was clear
-
 hook up stop button, it should reset the clock and return it to fresh state
     if pause button clicked, removed clicked style from play button
     add clicked style to pause button, unless the clock was clear
-
 get sand animation set to correspond to remaining time
-
 play sound when time is up
-
 ---
-
 get pomodoro mode working
-
 */
 
 const setButton = document.getElementById('submit'); 
@@ -36,31 +24,42 @@ const clock = document.getElementsByClassName('remaining')[0];
 
 let counter = 0;
 
+var myInterval = -1;
+
+let isPaused = false;
+
 setButton.addEventListener('click', () => {
+    
+if (isPaused == true){
+    isPaused = false;
+}    
     //regular timer values
     const timerHours = document.getElementsByClassName('reg-hours')[0].value;
     const timerMinutes = document.getElementsByClassName('reg-minutes')[0].value;
     const timerSeconds = document.getElementsByClassName('reg-seconds')[0].value;
-    
+
     //checking that the values are not empty
   if(timerHours != 0 || timerMinutes != 0 || timerSeconds != 0){
      let timeInSecs = (timerHours * 3600) + (timerMinutes * 60) + (timerSeconds * 1);
-      let parsed = parseInt(timeInSecs);
-   
-let time = 0;
-//increment the timer, print to the screen
-      function timeIt(){
-          if((timeInSecs - counter) - 1 >= 0){
-            counter++;
-            time = timeInSecs - counter;
-              makeItPretty();
-          };
-        };
-  console.log(time);
+      let parsed = parseInt(timeInSecs); 
+
+clearInterval(myInterval);
+setButton.innerHTML = "pause";
       
-//timer magic 
-      setInterval(timeIt, 1000); 
-    
+let time = 0; 
+
+if (myInterval == -1){
+   myInterval = setInterval(function(){
+        counter++;
+        time = timeInSecs - counter;
+        makeItPretty();
+}, 1000);  
+} else {
+    setButton.innerHTML = "go";
+        time = timeInSecs - counter;
+        isPaused = false;
+        makeItPretty();
+}
 
 //Make numbers be in 2 digits
 function DD(number, targetLength) {
@@ -73,31 +72,24 @@ function DD(number, targetLength) {
     
 //make it ready to be displayed and display it
       
-function makeItPretty(t){
+function makeItPretty(){
 //turn seconds back into hours, minutes, and seconds      
-    
     var hr = Math.floor(time / 3600);
     let nhr = Math.floor((time % 3600) / 60);
     var min = Math.floor(nhr);
-     var sec = Math.floor(time % 60);
-    
-    
+    var sec = Math.floor(time % 60);
+     
 //Output numbers as double digits
     ddhr = DD(hr, 2);
     ddmin = DD(min, 2);
     ddsec = DD(sec, 2);
     clock.innerHTML = ddhr + ':' + ddmin + ':' + ddsec;
-     
 };
-makeItPretty(time);   
-      
+makeItPretty();
   };
-    
     });
 
-
-
-
+console.log(myInterval);
 //Toggle between pomodoro mode and regular timer
 
 let chk  = document.getElementById("toggler").value;
