@@ -1,66 +1,64 @@
-/* To do:
-get the time entered
-when the set button is clicked, or enter is pushed
-take the three entries entered, convert all three to total seconds
-send the time to the timer clock
-decrement the time on the timer clock
-the play button should be disabled while timer is running
-    on set, button style = clicked
-hook up pause button
-    if pause button clicked, removed clicked style from play button
-    add clicked style to pause button, unless the clock was clear
-hook up stop button, it should reset the clock and return it to fresh state
-    if pause button clicked, removed clicked style from play button
-    add clicked style to pause button, unless the clock was clear
-get sand animation set to correspond to remaining time
-play sound when time is up
----
-get pomodoro mode working
-*/
+let savedHours = 0;
+let savedMinutes = 0;
+let savedSeconds = 0;
 
 const setButton = document.getElementById('submit'); 
-
 const clock = document.getElementsByClassName('remaining')[0];
 
 let counter = 0;
-
-var myInterval = -1;
-
+let myInterval = 0;
 let isPaused = false;
 
+console.log(savedHours);
+
 setButton.addEventListener('click', () => {
-    
-if (isPaused == true){
-    isPaused = false;
-}    
-    //regular timer values
-    const timerHours = document.getElementsByClassName('reg-hours')[0].value;
-    const timerMinutes = document.getElementsByClassName('reg-minutes')[0].value;
-    const timerSeconds = document.getElementsByClassName('reg-seconds')[0].value;
+//get the value that has been entered 
+let enteredHours = document.getElementsByClassName('reg-hours')[0].value;
+let enteredMinutes = document.getElementsByClassName('reg-minutes')[0].value;
+let enteredSeconds = document.getElementsByClassName('reg-seconds')[0].value;
 
-    //checking that the values are not empty
-  if(timerHours != 0 || timerMinutes != 0 || timerSeconds != 0){
-     let timeInSecs = (timerHours * 3600) + (timerMinutes * 60) + (timerSeconds * 1);
-      let parsed = parseInt(timeInSecs); 
+//check to see if this is a new value
+if (savedHours == enteredHours && savedMinutes == enteredMinutes && savedSeconds == enteredSeconds){
 
+//if true, no new value has been entered, they are pausing or restarting the clock
+
+//check to see if the clock had been paused
+if (isPaused == false){
 clearInterval(myInterval);
-setButton.innerHTML = "pause";
-      
-let time = 0; 
-
-if (myInterval == -1){
-   myInterval = setInterval(function(){
+        makeItPretty();
+        console.log("paused");
+        isPaused = true;
+} else{
+clearInterval(myInterval);
+    isPaused = false;
+        myInterval = setInterval(function(){
         counter++;
-        time = timeInSecs - counter;
         makeItPretty();
-}, 1000);  
-} else {
-    setButton.innerHTML = "go";
-        time = timeInSecs - counter;
-        isPaused = false;
+}, 1000)
+    console.log("started");
+    };
+}else{
+ console.log("set clock");   
+//if the value is new, reset the clock
+isPaused = false;
+clearInterval(myInterval);
+    savedHours = enteredHours;
+    savedMinutes = enteredMinutes;
+    savedSeconds = enteredSeconds;
+//start the clock 
+myInterval = setInterval(function(){
+        counter++;
         makeItPretty();
-}
+}, 1000)};
+    
 
+//make it ready to be displayed and display it
+function makeItPretty(){
+let time = 0;
+//turn all values into seconds and combine them into one value 
+let timeInSecs = (savedHours * 3600) + (savedMinutes * 60) + (savedSeconds * 1);
+let parsed = parseInt(timeInSecs);
+    
 //Make numbers be in 2 digits
 function DD(number, targetLength) {
         var output = number + '';
@@ -69,11 +67,8 @@ function DD(number, targetLength) {
     };
     return output;
 };
-    
-//make it ready to be displayed and display it
-      
-function makeItPretty(){
-//turn seconds back into hours, minutes, and seconds      
+//turn seconds back into hours, minutes, and seconds
+    time = timeInSecs - counter;
     var hr = Math.floor(time / 3600);
     let nhr = Math.floor((time % 3600) / 60);
     var min = Math.floor(nhr);
@@ -85,11 +80,8 @@ function makeItPretty(){
     ddsec = DD(sec, 2);
     clock.innerHTML = ddhr + ':' + ddmin + ':' + ddsec;
 };
-makeItPretty();
-  };
-    });
 
-console.log(myInterval);
+});
 //Toggle between pomodoro mode and regular timer
 
 let chk  = document.getElementById("toggler").value;
