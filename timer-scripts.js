@@ -3,13 +3,12 @@ let savedMinutes = 0;
 let savedSeconds = 0;
 
 const setButton = document.getElementById('submit'); 
+const submitIcon = document.getElementById('submitIcon');
 const clock = document.getElementsByClassName('remaining')[0];
 
 let counter = 0;
 let myInterval = 0;
 let isPaused = false;
-
-console.log(savedHours);
 
 setButton.addEventListener('click', () => {
 //get the value that has been entered 
@@ -28,6 +27,8 @@ clearInterval(myInterval);
         makeItPretty();
         console.log("paused");
         isPaused = true;
+        submitIcon.classList.remove('fa-play');
+        submitIcon.classList.add('fa-pause');
 } else{
 clearInterval(myInterval);
     isPaused = false;
@@ -36,11 +37,15 @@ clearInterval(myInterval);
         makeItPretty();
 }, 1000)
     console.log("started");
+        submitIcon.classList.remove('fa-pause');
+        submitIcon.classList.add('fa-play');
     };
 }else{
  console.log("set clock");   
 //if the value is new, reset the clock
-isPaused = false;
+    isPaused = false;
+        submitIcon.classList.remove('fa-play');
+        submitIcon.classList.add('fa-pause');
 clearInterval(myInterval);
     savedHours = enteredHours;
     savedMinutes = enteredMinutes;
@@ -82,6 +87,10 @@ function DD(number, targetLength) {
 };
 
 });
+//listen for change in value added so we can change the button to a reload icon
+
+
+
 //Toggle between pomodoro mode and regular timer
 
 let chk  = document.getElementById("toggler").value;
