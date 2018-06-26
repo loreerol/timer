@@ -100,14 +100,14 @@ main{
 }
 
 .innersandtop{
-    height: 30%;
+    height: 0%;
     background-color: pink;
     overflow: hidden;
     
 }
 
 .innersandbottom{
-    height: 15%;
+    height: 43%;
     background-color: pink;
     overflow: hidden;
 }
@@ -307,6 +307,8 @@ label{
      }
      
     }
+
+
 
 
 

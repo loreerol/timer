@@ -27,8 +27,8 @@ clearInterval(myInterval);
         makeItPretty();
         console.log("paused");
         isPaused = true;
-        submitIcon.classList.remove('fa-play');
-        submitIcon.classList.add('fa-pause');
+        submitIcon.classList.remove('fa-pause');
+        submitIcon.classList.add('fa-play');
 } else{
 clearInterval(myInterval);
     isPaused = false;
@@ -37,8 +37,8 @@ clearInterval(myInterval);
         makeItPretty();
 }, 1000)
     console.log("started");
-        submitIcon.classList.remove('fa-pause');
-        submitIcon.classList.add('fa-play');
+        submitIcon.classList.remove('fa-play');
+        submitIcon.classList.add('fa-pause');
     };
 }else{
  console.log("set clock");   
@@ -63,6 +63,7 @@ let time = 0;
 //turn all values into seconds and combine them into one value 
 let timeInSecs = (savedHours * 3600) + (savedMinutes * 60) + (savedSeconds * 1);
 let parsed = parseInt(timeInSecs);
+
     
 //Make numbers be in 2 digits
 function DD(number, targetLength) {
@@ -78,16 +79,26 @@ function DD(number, targetLength) {
     let nhr = Math.floor((time % 3600) / 60);
     var min = Math.floor(nhr);
     var sec = Math.floor(time % 60);
+    
+    
      
 //Output numbers as double digits
     ddhr = DD(hr, 2);
     ddmin = DD(min, 2);
     ddsec = DD(sec, 2);
     clock.innerHTML = ddhr + ':' + ddmin + ':' + ddsec;
+
+//calculate the percentage of time left for the hourglass animation  
+console.log("time", time);
+console.log("parsed", parsed);
+let sand = (time/parsed*100)/2;
+console.log("sand", sand);
+
+
 };
 
 });
-//listen for change in value added so we can change the button to a reload icon
+
 
 
 
