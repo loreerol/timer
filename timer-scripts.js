@@ -1,10 +1,15 @@
 let savedHours = 0;
 let savedMinutes = 0;
 let savedSeconds = 0;
+let sandTop = 0;
 
 const setButton = document.getElementById('submit'); 
 const submitIcon = document.getElementById('submitIcon');
 const clock = document.getElementsByClassName('remaining')[0];
+const getSandTop = document.getElementsByClassName("innersandbottom")[0];
+const getSandBottom = document.getElementsByClassName("innersandtop")[0];
+console.log(sandTop);
+
 
 let counter = 0;
 let myInterval = 0;
@@ -31,7 +36,7 @@ clearInterval(myInterval);
         submitIcon.classList.add('fa-play');
 } else{
 clearInterval(myInterval);
-    isPaused = false;
+        isPaused = false;
         myInterval = setInterval(function(){
         counter++;
         makeItPretty();
@@ -60,11 +65,10 @@ myInterval = setInterval(function(){
 //make it ready to be displayed and display it
 function makeItPretty(){
 let time = 0;
-//turn all values into seconds and combine them into one value 
+//turn all values into seconds and combine them into one value
 let timeInSecs = (savedHours * 3600) + (savedMinutes * 60) + (savedSeconds * 1);
 let parsed = parseInt(timeInSecs);
-
-    
+  
 //Make numbers be in 2 digits
 function DD(number, targetLength) {
         var output = number + '';
@@ -75,32 +79,32 @@ function DD(number, targetLength) {
 };
 //turn seconds back into hours, minutes, and seconds
     time = timeInSecs - counter;
+    if (time < 0){
+        clearInterval(myInterval);
+        
+}else{
     var hr = Math.floor(time / 3600);
     let nhr = Math.floor((time % 3600) / 60);
     var min = Math.floor(nhr);
     var sec = Math.floor(time % 60);
     
-    
-     
 //Output numbers as double digits
     ddhr = DD(hr, 2);
     ddmin = DD(min, 2);
     ddsec = DD(sec, 2);
     clock.innerHTML = ddhr + ':' + ddmin + ':' + ddsec;
+}
+    
 
-//calculate the percentage of time left for the hourglass animation  
-console.log("time", time);
-console.log("parsed", parsed);
-let sand = (time/parsed*100)/2;
-console.log("sand", sand);
-
+//hourglass animation  
+let sandTop = (time/parsed*100)/2;
+let sandBottom = 50 - sandTop;
+getSandTop.style.height = sandTop + "%";
+getSandBottom.style.height = sandBottom + "%";
 
 };
 
 });
-
-
-
 
 //Toggle between pomodoro mode and regular timer
 
