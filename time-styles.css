@@ -91,10 +91,12 @@ main{
     vertical-align: middle;
     overflow: hidden;
 }
+/*
 .sand-bottom{
     border-top: 20px solid white;
 
 }
+*/
 .sand-top{
    border-bottom: 20px solid white;
 }
@@ -103,13 +105,14 @@ main{
     height: 0%;
     background-color: pink;
     overflow: hidden;
-    
+    border-top: 20px solid white;
 }
 
 .innersandbottom{
-    height: 43%;
+    height: 50%;
     background-color: pink;
     overflow: hidden;
+    
 }
 
 .wrapper {
@@ -153,6 +156,8 @@ p{
     color: gray;
     
 }
+
+
 
 
 /* The switch - the box around the slider */

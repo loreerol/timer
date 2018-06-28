@@ -79,7 +79,7 @@ function DD(number, targetLength) {
 };
 //turn seconds back into hours, minutes, and seconds
     time = timeInSecs - counter;
-    if (time < 0){
+    if (time === 0){
         clearInterval(myInterval);
         
 }else{
@@ -95,9 +95,10 @@ function DD(number, targetLength) {
     clock.innerHTML = ddhr + ':' + ddmin + ':' + ddsec;
 }
     
-
 //hourglass animation  
 let sandTop = (time/parsed*100)/2;
+    console.log(time);
+    console.log(sandTop);
 let sandBottom = 50 - sandTop;
 getSandTop.style.height = sandTop + "%";
 getSandBottom.style.height = sandBottom + "%";
