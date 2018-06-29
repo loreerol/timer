@@ -68,6 +68,20 @@ main{
    display:none ;
 }
 
+#alarm{
+    display:inline-flex;
+    height: 60px;
+    width: 60px;    
+    float: right;
+    justify-content: center;
+    
+}
+
+#alarm i {
+    align-self:center;
+    color: pink;
+}
+
 #hourglass{
    width: 200px;
     height: 300px;
@@ -78,41 +92,32 @@ main{
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
     overflow: hidden;
-    
+    border-bottom: 20px solid white;
+    border-top: 20px solid white;
 }
 .righttri{
     position:absolute;
-    left: -94px;
-    top:-60px
+    left:-94px;
+    top:-80px
 }
 
 .sand{
-    height: 150px;
+    height: 130px;
     vertical-align: middle;
     overflow: hidden;
 }
-/*
-.sand-bottom{
-    border-top: 20px solid white;
 
-}
-*/
-.sand-top{
-   border-bottom: 20px solid white;
-}
 
 .innersandtop{
     height: 0%;
     background-color: pink;
     overflow: hidden;
-    border-top: 20px solid white;
 }
 
 .innersandbottom{
-    height: 50%;
+    height: 0%;
     background-color: pink;
     overflow: hidden;
-    
 }
 
 .wrapper {
