@@ -9,7 +9,8 @@ const clock = document.getElementsByClassName('remaining')[0];
 const getSandTop = document.getElementsByClassName("innersandbottom")[0];
 const getSandBottom = document.getElementsByClassName("innersandtop")[0];
 console.log(sandTop);
-
+const alarmIcon = document.getElementsByClassName("alarm-icon")[0];
+console.log(alarmIcon);
 
 let counter = 0;
 let myInterval = 0;
@@ -104,6 +105,25 @@ getSandBottom.style.height = sandBottom + "%";
 };
 
 });
+
+let alarmbell  = document.getElementById("alarm-bell").value;
+console.log(alarmbell);
+
+function alarmToggle(){
+    if (alarmbell == 'on'){
+        alarmbell = 'off';
+        console.log('off');
+        alarmIcon.classList.add('fa-bell');
+        alarmIcon.classList.remove('fa-bell-slash');
+        return alarmbell;
+    } else {
+        alarmbell = 'on';
+        console.log('on');
+        alarmIcon.classList.remove("fa-bell");
+        alarmIcon.classList.add("fa-bell-slash");
+        return alarmbell;
+    }
+}
 
 //Toggle between pomodoro mode and regular timer
 
