@@ -8,13 +8,29 @@ const submitIcon = document.getElementById('submitIcon');
 const clock = document.getElementsByClassName('remaining')[0];
 const getSandTop = document.getElementsByClassName("innersandbottom")[0];
 const getSandBottom = document.getElementsByClassName("innersandtop")[0];
-console.log(sandTop);
 const alarmIcon = document.getElementsByClassName("alarm-icon")[0];
-console.log(alarmIcon);
+let alarmbell  = document.getElementById("alarm-bell").value;
+const bellSound = new Audio('service-bell_daniel_simion.wav');
+
 
 let counter = 0;
 let myInterval = 0;
 let isPaused = false;
+
+//alarm sound toggel
+function alarmToggle(){
+    if (alarmbell == 'on'){
+        alarmbell = 'off';
+        alarmIcon.classList.add('fa-bell');
+        alarmIcon.classList.remove('fa-bell-slash');
+        return alarmbell;
+    } else {
+        alarmbell = 'on';
+        alarmIcon.classList.remove("fa-bell");
+        alarmIcon.classList.add("fa-bell-slash");
+        return alarmbell;
+    }
+}
 
 setButton.addEventListener('click', () => {
 //get the value that has been entered 
@@ -80,10 +96,14 @@ function DD(number, targetLength) {
 };
 //turn seconds back into hours, minutes, and seconds
     time = timeInSecs - counter;
-if (time === 0){
+if (time === 0 && alarmbell == 'off'){
         clearInterval(myInterval);
         clock.innerHTML = "00" + ':' + "00" + ':' + "00";
-}else{
+        bellSound.play();
+}else if(time === 0 && alarmbell == 'on'){
+         clearInterval(myInterval);
+        clock.innerHTML = "00" + ':' + "00" + ':' + "00";
+} else {
     var hr = Math.floor(time / 3600);
     let nhr = Math.floor((time % 3600) / 60);
     var min = Math.floor(nhr);
@@ -106,24 +126,7 @@ getSandBottom.style.height = sandBottom + "%";
 
 });
 
-let alarmbell  = document.getElementById("alarm-bell").value;
-console.log(alarmbell);
 
-function alarmToggle(){
-    if (alarmbell == 'on'){
-        alarmbell = 'off';
-        console.log('off');
-        alarmIcon.classList.add('fa-bell');
-        alarmIcon.classList.remove('fa-bell-slash');
-        return alarmbell;
-    } else {
-        alarmbell = 'on';
-        console.log('on');
-        alarmIcon.classList.remove("fa-bell");
-        alarmIcon.classList.add("fa-bell-slash");
-        return alarmbell;
-    }
-}
 
 //Toggle between pomodoro mode and regular timer
 
