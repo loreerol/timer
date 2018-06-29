@@ -74,12 +74,25 @@ main{
     width: 60px;    
     float: right;
     justify-content: center;
-    
 }
 
-#alarm i {
+#alarm input{
     align-self:center;
-    color: pink;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#alarm-bell{
+    display: none;
+}
+.bell{
+    align-self: center;
+    color: silver;
+}
+#alarm-bell:checked + .bell{
+    color: #fcd9c4;
 }
 
 #hourglass{
@@ -134,7 +147,7 @@ button {
 	font-size: 20px;
     color: pink;
 	background: white;
-	padding: 20px 20px;
+	padding: 20px 25px;
 	text-align: center;
 	transition: all 0.3s;
     border: 2px solid lightslategrey;
@@ -221,7 +234,7 @@ form input{
     margin: 0px;
     padding: 0px;
     border: 0;
-    color: #efefef;
+    color: grey;
     
 
 }
@@ -268,7 +281,7 @@ label{
      }
      .border{
          margin: 10px;
-         width:90vw ;
+         width: 90vw ;
          border:none;
          border-radius: 0;
          display: flex;
