@@ -305,6 +305,7 @@ label{
      .options{
          flex-direction: column;
          z-index: 2;
+         
      }
      
      #settings-reg{
